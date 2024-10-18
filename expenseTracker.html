@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>expenses</title>
+    <link href="img/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+
+<body>
+    <div class="grid-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="menu-icon" onclick="openSidebar()">
+                <span class="fas fa-bars"></span>
+            </div>
+
+            <h3>
+                Personal finance tracker
+            </h3>
+            <div class="header-right">
+                <span class="fa fa-bell"></span>
+                <span class="fa fa-envelope"></span>
+
+                <img src="img/profile (2).jpg">
+            </div>
+        </header>
+
+        <aside id="sidebar">
+            <div class="sidebar-title">
+                <div class="sidebar-brand">
+                    <span class="fa fa-code"></span> CTI
+                </div>
+                <span class="fa fa-times" onclick="closeSidebar()"></span>
+            </div>
+
+            <ul class="sidebar-list">
+                <li class="sidebar-list-item">
+                    <a href="dshboard.html" target="_blank">
+                        <span class="material-icons-outlined fa fa-grip-horizontal text-success"></span> Dashboard
+                    </a>
+                </li>
+
+                <li class="sidebar-list-item">
+                    <a href="incomeTracker.html" target="_blank">
+                        <span class="fas fa-dollar-sign text-success"></span> Income
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="expenseTracker.html" target="_blank">
+                        <span class="fas fa-money-bill text-danger"></span> Expenses
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="budgetTracker.html" target="_blank">
+                        <span class="fas fa-coins text-warning "></span> Budget
+                    </a>
+                </li>
+                
+                <li class="sidebar-list-item">
+                    <a href="saving-goals.html" target="_blank">
+                        <span class="fas fa-hand-holding-usd text-info"></span> Saving goals
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="index.html" target="_blank">
+                        <span class="fas fa-sign-out-alt text-info Logout"></span> Logout
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <main class="main-container ">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-6 expenses-form">
+                        <div class="container">
+                            <form id="expenseForm">
+                                <h2>Add Expense</h2>
+
+                                <input type="text" id="source" placeholder="Enter Source" required />
+
+                                <input type="number" id="amount" placeholder="Enter Amount" required />
+
+                                <input type="date" id="date" required />
+                                <button type="submit">Add Expense</button>
+                            </form>
+                            <div id="totalExpense">Total Expense: $ 0</div>
+                            <div class="lists">
+                                <h3>Expense List</h3>
+                                <table id="expenseTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Source</th>
+                                            <th>Amount</th>
+                                            <th>Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="expenseList">
+                                </table>
+    
+                            </div>
+                            <table>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <canvas id="dashboardExpenseChart"></canvas>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </main>
+
+    </div>
+    <script>
+       document.addEventListener("DOMContentLoaded", () => {
+    let totalExpense = parseFloat(localStorage.getItem("totalExpenses")) || 0;
+    let expenseList = JSON.parse(localStorage.getItem("expenseList")) || [];
+    let isEditing = false;
+    let editingIndex = null;
+
+    const ctx = document.getElementById("dashboardExpenseChart").getContext("2d");
+    let expenseChart;
+
+    // Function to initialize the chart
+    const initChart = () => {
+        if (expenseChart) {
+            expenseChart.destroy(); // Destroy the previous chart before creating a new one
+        }
+        const labels = expenseList.map(expense => expense.source);
+        const data = expenseList.map(expense => expense.amount);
+
+        expenseChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Expenses',
+                    data: data,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    };
+
+    // Display the initial total expense
+    document.getElementById("totalExpense").textContent = `Total Expense: $${totalExpense.toFixed(2)}`;
+
+    // Render the existing expense list from localStorage
+    const renderExpenseList = () => {
+        const expenseListTable = document.getElementById("expenseList");
+        expenseListTable.innerHTML = '';  // Clear previous entries
+        expenseList.forEach((expense, index) => {
+            const row = expenseListTable.insertRow();
+            row.innerHTML = `
+                <td>${expense.source}</td>
+                <td>$${expense.amount.toFixed(2)}</td>
+                <td>${expense.date}</td>
+                <td>
+                    <button onclick="editExpense(${index})" style="background-color: teal; color: white; border: none; padding: 5px 10px; cursor: pointer; margin-right: 5px;">Edit</button>
+                    <button onclick="deleteExpense(${index})" style="background-color: brown; color: white; border: none; padding: 5px 10px; cursor: pointer;">Delete</button>
+                </td>
+            `;
+        });
+
+        // Update the chart after rendering the list
+        initChart();
+    };
+    renderExpenseList();
+
+    // Handle form submission for adding/editing expenses
+    document.getElementById("expenseForm").addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const source = document.getElementById("source").value;
+        const amount = parseFloat(document.getElementById("amount").value);
+        const date = document.getElementById("date").value;
+
+        if (!source || !amount || !date) return;  // Validation
+
+        if (isEditing) {
+            // Update the existing expense
+            expenseList[editingIndex] = { source, amount, date };
+            isEditing = false;
+            editingIndex = null;
+        } else {
+            // Add a new expense
+            totalExpense += amount;
+            localStorage.setItem("totalExpenses", totalExpense);
+            expenseList.push({ source, amount, date });
+        }
+
+        // Save updated list to localStorage
+        localStorage.setItem("expenseList", JSON.stringify(expenseList));
+
+        // Update UI
+        document.getElementById("totalExpense").textContent = `Total Expense: $${totalExpense.toFixed(2)}`;
+        renderExpenseList();
+
+        // Reset form
+        document.getElementById("expenseForm").reset();
+    });
+
+    // Function to delete expense
+    window.deleteExpense = function (index) {
+        const expense = expenseList[index];
+        totalExpense -= expense.amount;
+        expenseList.splice(index, 1);  // Remove from array
+        localStorage.setItem("totalExpenses", totalExpense);
+        localStorage.setItem("expenseList", JSON.stringify(expenseList));
+
+        // Update UI
+        document.getElementById("totalExpense").textContent = `Total Expense: $${totalExpense.toFixed(2)}`;
+        renderExpenseList();
+    };
+
+    // Function to edit expense
+    window.editExpense = function (index) {
+        const expense = expenseList[index];
+        document.getElementById("source").value = expense.source;
+        document.getElementById("amount").value = expense.amount;
+        document.getElementById("date").value = expense.date;
+
+        isEditing = true;
+        editingIndex = index;
+    };
+
+    // Initialize the chart when the page loads
+    initChart();
+});
+
+    </script>
+    <script src="js/scripts.js"></script>
+    <script src="Bootstrap/bootstrap.min.js"></script>
+    <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

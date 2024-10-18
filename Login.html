@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>log in </title>
+    <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="img/favicon.ico" rel="icon">
+    <script src=""></script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">personal finance tracker</a>
+            <button class="navbar-toggler btn-nav" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Aboute.html">Aboute</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">contact</a>
+                    </li>
+                    <li class="nav-item  login-btn">
+                        <a class="nav-link" href="Login.html">Log in</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container login--container">
+        <div class="box ">
+            <!---.....................Login box ...........................-->
+            <div class="box-login" id="login">
+                <div class="top-header">
+                    <h3> Login</h3>
+                    <small>Do you have an acount?</small>
+                </div>
+            
+                <div class="input-group">
+                    <div class="input-field">
+                        <input type="text" class="login-input" id="logEmail" Required>
+                        <label for="logEmail">Email address</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" class="login-input" id="logPassword" Required>
+                        <label for="logPassword">password</label>
+                        <div class="eye-area">
+                            <div class="eye-box" onclick="mylogpassword()">
+                                <i class="fa-regular fa-eye" id="eye"> </i>
+                                <i class="fa-regular fa-eye-slash" id="eye-slash"> </i>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="remember">
+                        <input type="checkbox" id="formcheack" class="cheack">
+                        <label for="formcheack">Remember</label>
+
+                    </div>
+                </div>
+                <button type="submit" class="log-submit" id="loginBtn">Login</button>
+
+               <!-- <button type="submit" class="log-submit">Login</button> -->
+        
+                <div class="forget">
+                    <a href="#">forget password ?</a>
+                </div>
+            </div>
+            <!--Register ..............-->
+            <!-- <div class="box-register" id="register">
+                <div class="top-header">
+                    <h3>Sigin Up</h3>
+                    <small>Have an acount ?</small>
+                </div>
+           
+                <div class="input-group">
+                    <div class="input-field">
+                        
+                        <input type="text " class="login-input" id="regUser" required>
+                        <label for="regUser">Usere name</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input type="text " class="login-input" id="regEmail" required>
+                        <label for="regEmail">Email adress</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password " class="login-input" id="regPassword" required>
+                        <label for="regPassword">password</label>
+                        <div class="eye-area">
+                            <div class="eye-box" onclick="myregpassword()">
+                                <i class="fa-regular fa-eye" id="eye-2"> </i>
+                                <i class="fa-regular fa-eye-slash" id="eye-slash-2"> </i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="remember">
+                        <input type="checkbox" id="formcheack-2" class="cheack">
+                        <label for="formcheack-2">Remember</label>
+
+                    </div>
+                </div>
+              <button type="submit" class="log-submit">Sign Up</button>
+            
+                
+            </div> -->
+            <div class="box-register" id="register">
+                <div class="top-header">
+                    <h3>Sign Up</h3>
+                    <small>Have an account?</small>
+                </div>
+            
+                <div class="input-group">
+                    <div class="input-field">
+                        <input type="text" class="login-input" id="regUser" required>
+                        <label for="regUser">Username</label>
+                    </div>
+            
+                    <div class="input-field">
+                        <input type="text" class="login-input" id="regEmail" required>
+                        <label for="regEmail">Email address</label>
+                    </div>
+                    
+                    <div class="input-field">
+                        <input type="password" class="login-input" id="regPassword" required>
+                        <label for="regPassword">Password</label>
+                        <div class="eye-area">
+                            <div class="eye-box" onclick="myregpassword()">
+                                <i class="fa-regular fa-eye" id="eye-2"></i>
+                                <i class="fa-regular fa-eye-slash" id="eye-slash-2"></i>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="remember">
+                        <input type="checkbox" id="formcheck-2" class="check">
+                        <label for="formcheck-2">Remember</label>
+                    </div>
+                </div>
+            
+                <button type="submit" class="log-submit" id="signupBtn">Sign Up</button>
+            </div>
+            <!--Switch .............................................-->
+            <div class="switch">
+                <a href="#" class="login" onclick="login()">Login</a>
+                <a href="#" class="register" onclick="register()">Register</a>
+                <div class="btn-active" id="btn"></div>
+            </div>
+        </div>
+
+    </div>
+   
+
+
+
+
+
+    <script>
+   
+</script>
+
+</script>
+    <section class="footer-section">
+        <div class="footer">
+            <p class="footer-p">
+                &copy; 2024 personal finance tracker .All rights reserved
+                <br>
+
+                <strong> Design & developed by Farzana Ahmadzai </strong>
+                <br> contact us: farzanaahmadzai175@gmail.com
+            </p>
+            </p>
+        </div>
+    </section>
+    <script src="js/scripts.js"></script>
+    <script src="Bootstrap/bootstrap.min.js"></script>
+    <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.js"></script>
+</body>

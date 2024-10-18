@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Teach Solution Inc</title>
+    <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="img/favicon.ico" rel="icon">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Personal Finance Tracker</a>
+            <button class="navbar-toggler btn-nav btn-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Aboute.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item login-btn">
+                        <a class="nav-link" href="Login.html">Log in</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="contact-section">
+        <div class="container contact-container">
+            <h4>Contact Us</h4>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <br>
+                <input type="text" name="name" id="name" class="contact-input" required>
+                <br>
+                <label for="email">Email:</label>
+                <br>
+                <input type="email" name="email" id="email" class="contact-input" required>
+                <br>
+                <label for="message">Message:</label>
+                <br>
+                <textarea id="message" required></textarea>
+                <br>
+                <button type="submit" class="btn Submit-button">Submit</button>
+            </form>
+
+            <div id="formResponse" style="display:none; margin-top:20px;"></div>
+
+            <!-- <iframe id="gmap_canvas" width="100%" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=%20Herat+()&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe> -->
+        </div>
+    </section>
+
+    <section class="footer-section">
+        <div class="footer">
+            <p class="footer-p">
+                &copy; 2024 Personal Finance Tracker. All rights reserved
+                <br>
+                <strong>Design & developed by Farzana Ahmadzai</strong>
+                <br> Contact us: farzanaahmadzai175@gmail.com
+            </p>
+        </div>
+    </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const contactForm = document.getElementById('contactForm');
+    const formResponse = document.getElementById('formResponse');
+
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // جلوگیری از بارگذاری مجدد صفحه
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        if (name && email && message) {
+            // شبیه‌سازی ارسال فرم (در پروژه واقعی، اینجا می‌توان درخواست AJAX به سرور ارسال کرد)
+            formResponse.innerHTML = `<p class="alert alert-success">Thank you, ${name}! Your message has been successfully sent.</p>`;
+            formResponse.style.display = 'block';
+
+            // ریست کردن فرم
+            contactForm.reset();
+        } else {
+            formResponse.innerHTML = `<p class="alert alert-danger">Please fill out all fields.</p>`;
+            formResponse.style.display = 'block';
+        }
+    });
+});
+
+</script>
+    <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

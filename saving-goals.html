@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>saving goals</title>
+  <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.min.css">
+  <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="style.css">
+  <link href="img/favicon.ico" rel="icon">
+
+</head>
+
+<body>
+  <div class="grid-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="menu-icon" onclick="openSidebar()">
+        <span class="fas fa-bars"></span>
+      </div>
+
+      <h3>
+        Personal finance tracker
+      </h3>
+      <div class="header-right">
+        <span class="fa fa-bell"></span>
+        <span class="fa fa-envelope"></span>
+
+        <img src="img/profile (2).jpg">
+      </div>
+    </header>
+
+    <!-- End Header -->
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="sidebar-title">
+        
+        <div class="sidebar-brand">
+          <span class="fa fa-code"></span> CTI
+          </div>
+        <span class="fa fa-times" onclick="closeSidebar()"></span>
+      </div>
+
+      <ul class="sidebar-list">
+        <li class="sidebar-list-item">
+          <a href="dshboard.html" target="_blank">
+            <span class="material-icons-outlined fa fa-grip-horizontal text-success"></span> Dashboard
+          </a>
+        </li>
+       
+        <li class="sidebar-list-item">
+          <a href="incomeTracker.html" target="_blank">
+            <span class="fas fa-dollar-sign text-success"></span> Income
+          </a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="expenseTracker.html" target="_blank">
+            <span class="fas fa-money-bill text-danger"></span> Expenses
+          </a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="budgetTracker.html" target="_blank">
+            <span class="fas fa-coins text-warning "></span> Budget
+          </a>
+        </li>
+      
+        <li class="sidebar-list-item">
+          <a href="saving-goals.html" target="_blank">
+            <span class="fas fa-hand-holding-usd text-info"></span> Saving goals
+          </a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="index.html" target="_blank">
+            <span class="fas fa-sign-out-alt text-info Logout"></span> Logout
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-container">
+
+
+      <div class="row">
+
+        <div class="col-md-6 saving-goal">
+
+          <div class="calculator-container">
+            <div class="row">
+
+              <div class="icon--top">
+                <span class="fa fa-hand-holding-usd"></span>
+              </div>
+
+
+
+            </div>
+            <h2 class="text-center">Savings Goal Calculator</h2>
+            <form id="calculatorForm">
+              <div class="form-group">
+                <label for="startingBalance">Starting Balance:</label>
+                <input type="number" id="startingBalance">
+              </div>
+              <div class="form-group">
+                <label for="interestRate">Interest Rate (%)
+                  <small>(monthly)</small>:</label>
+                <input type="number" id="interestRate">
+              </div>
+
+              <div class="form-group">
+                <label for="regularSavings">Regular Savings:</label>
+                <input type="number" id="regularSavings">
+              </div>
+            
+              <div class="form-group">
+                <label for="savingsFrequency">Savings Frequency:</label>
+                <select id="savingsFrequency">
+                  <option value="monthly">monthly</option>
+                  <option value="daily">daily</option>
+                  <option value="yearly">yearly</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="years">Savings Range
+                  <small>(range of savings in years)</small>:</label>
+                <input type="number" id="years">
+              </div>
+
+              <button type="button" class="btn btn-info CalculateSavings" onclick="calculateSavings()">Calculate Savings</button>
+            </form>
+
+            <div class="result" style="display: none;">
+              <div class="alert alert-success text-center" id="result" role="alert" style="font-size: 20px;">
+              </div>
+              <button class="btn btn-info claculat-again" onclick="location.reload()">Calculate Again</button>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </main>
+  
+
+  </div>
+
+  <script>
+
+/*******************************Saving goals********************************** */
+function calculateSavings() {
+    // Get form input values
+    var startingBalance = parseFloat(document.getElementById('startingBalance').value);
+    var interestRate = parseFloat(document.getElementById('interestRate').value);
+    var regularSavings = parseFloat(document.getElementById('regularSavings').value);
+    var savingsFrequency = document.getElementById('savingsFrequency').value;
+    var years = parseInt(document.getElementById('years').value);
+
+    // Calculate total savings
+    var totalSavings = startingBalance;
+
+    // Convert interest rate to monthly if necessary
+    if (savingsFrequency !== 'monthly') {
+        interestRate /= 12;
+    }
+
+    var numberOfDeposits = 0;
+
+    // Calculate total savings based on the frequency
+    switch (savingsFrequency) {
+        case 'monthly':
+            numberOfDeposits = years * 12;
+            for (var i = 0; i < numberOfDeposits; i++) {
+                totalSavings += regularSavings;
+                totalSavings *= (1 + interestRate / 100);
+            }
+            break;
+        case 'daily':
+            numberOfDeposits = years * 365;
+            for (var i = 0; i < numberOfDeposits; i++) {
+                totalSavings += regularSavings;
+                totalSavings *= (1 + interestRate / 100 / 365);
+            }
+            break;
+        case 'yearly':
+            numberOfDeposits = years;
+            for (var i = 0; i < numberOfDeposits; i++) {
+                totalSavings += regularSavings;
+                totalSavings *= (1 + interestRate / 100);
+            }
+            break;
+        default:
+            break;
+    }
+
+    // Display result
+    let resultDiv = document.querySelector('.result');
+    let formDiv = document.getElementById('calculatorForm');
+    formDiv.style.display = 'none'; 
+    resultDiv.style.display = '';
+    document.getElementById('result').innerHTML = `Your total savings in ${years} year is $${totalSavings.toFixed(2)}`;
+}
+  </script>
+
+
+  <script src="js/scripts.js"></script>
+
+  <script src="Bootstrap/bootstrap.min.js"></script>
+  <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

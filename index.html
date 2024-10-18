@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>personal finance tracker</title>
+    <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="img/favicon.ico" rel="icon">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!-- <script src="js/my-custom-charts.js"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- Animate on Scroll library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!--transaction chart cdn.......-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">personal finance tracker</a>
+            <button class="navbar-toggler btn-nav" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Aboute.html">Aboute</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">contact</a>
+                    </li>
+                    <li class="nav-item  login-btn">
+                        <a class="nav-link" href="Login.html">Log in</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="top-section">
+        <div class="container">
+            <div class="row leading-section">
+                <div class="col-md-8">
+                    <div class="home-content">
+                        <div class="home-title" data-aos="fade-in">
+                            <h3>Smart way </h3>
+                            <span> to Manage</span>
+                        </div>
+                        <div class="home-title" data-aos="fade-in" data-aos-delay="1000">
+                            <h3>our </h3>
+                            <span> personal finance tracker</span>
+                        </div>
+                        <div class="main-text" data-aos="fade-in" data-aos-delay="2000">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis minus adipisci delectus quisquam
+                                unde porro, numquam est, nobis hic quis aliq am, autem rem laboriosam doloribus commodi explicabo
+                                doloremque deleniti molestiae?</p>
+                        </div>
+                        <div class="home-button">
+                            <a href="Login.html" class="btn home-btn" data-aos="bounce-in" data-aos-delay="3000"> Get started </a>
+                            <a href="Aboute.html" class="btn read-btn" data-aos="bounce-in" data-aos-delay="3000"> read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <canvas id="incomeChart" width="100" height="100"></canvas>
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ......................................testimesioal-section started.................................. -->
+    <section class="testimesioal-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 content animate__animated animate__fadeInLeft">
+                    <!-- Added animation class -->
+                    <div class="info-content">
+                        <h5> we Have
+                            <span>Amany Advantages</span>And The Resons Why You Choose US</h5>
+                        <p class="info-p">Our system provide assistance for those of you who want to manage yor finance so that they are more
+                            strutured with the best platform
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row ">
+
+                <div class="col-md-3 card testimesioal-card animate__animated animate__zoomIn animate__delay-1s">
+                    <!-- Added animation class with delay -->
+                    <div class="icon-card">
+                        <i class="fa fa-laptop"></i>
+                    </div>
+                    <div class="card-body">
+                        <strong>Easly Accessible</strong>
+                        <p class="card-text">you access it easly because it can be open on a cellphone and Laptop</p>
+                        <a href="#" class="btn btn-info stretched-link">Leran more</a>
+                    </div>
+                </div>
+                <div class="col-md-3 card testimesioal-card animate__animated animate__zoomIn animate__delay-2s">
+                    <!-- Added animation class with delay -->
+                    <div class="icon-card">
+                        <i class="fa fa-layer-group"></i>
+                    </div>
+                    <div class="card-body">
+                        <strong>Many features</strong>
+                        <p class="card-text">you access it easly because it can be open on a cellphone and Laptop</p>
+                        <a href="#" class="btn btn-info stretched-link">Leran more</a>
+                    </div>
+                </div>
+                <div class="col-md-3 card testimesioal-card animate__animated animate__zoomIn animate__delay-3s">
+                    <!-- Added animation class with delay -->
+                    <div class="icon-card">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </div>
+                    <div class="card-body">
+                        <strong>Auto Save change</strong>
+                        <p class="card-text">we havethe best features that help you the manage your finance</p>
+                        <a href="#" class="btn btn-info stretched-link">Leran more</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 content animate__animated animate__fadeInRight animate__delay-4s">
+                    <!-- Added animation class with delay -->
+                    <div class="info-content">
+                        <h5> There Are
+                            <span>Various Features</span>That Will Help Manage Your Finanace</h5>
+                        <p class="info-p">with the help of these varios features , mamanging your finanace will feel much easier and more orgnized.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+    </section>
+    <!-- ........................................end secttion....................................................                 -->
+
+    <!-- ............................Balance section satrted........................................................... -->
+
+    <section class="balanace-section">
+        <div class="container">
+            <div class="row balance-row">
+                <div class="col-md-8" data-aos="fade-in-left">
+                    <!-- Replaced with AOS attribute -->
+                    <div class="balance-col">
+                        <a class="finanacial-a">finanacial activity</a>
+                        <div class="card-body">
+                            <h3>You Can Record All
+                                <br> Your Expenses & Income</h3>
+                            <p class="card-text"> with you entring each of your income and expenses .then we will save it and will present a summary
+                                data of each of yor financal activities.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-in-right" data-aos-delay="1000">
+                    <div class="last-month-card">
+                        <div class="card-body">
+                            <!-- <div id="totalIncome">Total Income: $0.00</div> -->
+                        </div>
+                        <div class="income--card" data-aos="fade-in-up" data-aos-delay="2000">
+
+                            <p class="card-text">
+                                <span>
+                                    <img src="img/m (5).jpg"> </span>Total Income </p>
+                            <div id="totalIncome">: $0.00</div>
+
+                        </div>
+                        <div class="expenses--card" data-aos="fade-in-up" data-aos-delay="3000">
+                            <p class="card-text">
+                                <span>
+                                    <img src="img/m (2).jpg"> </span>Expenses</p>
+                            <div id="totalExpenseDisplay"> $0</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ...........................end balance section............................................ -->
+
+
+    <!-- ........................................home-transection-section started ................................... -->
+
+
+    <section class="home-transection-section">
+        <div class="container">
+
+            <div class="row balance-row">
+                <div class="col-md-4 animate__animated animate__fadeInLeft">
+                    <!-- Added animation class -->
+                    <canvas id="transaction-chart" width="500" height="300"></canvas>
+
+                </div>
+                <div class="col-md-7 animate__animated animate__zoomIn animate__delay-3s">
+                    <!-- Added animation class with delay -->
+                    <div class="balance-col">
+                        <a class="finanacial-a">activity chart</a>
+                        <div class="card-body">
+                            <h3>There Graph Of Income &
+                                <br> Expenses </h3>
+
+                            <p class="card-text"> we display a graph of your income & expenses so you can monitor yor recent activity so you can
+                                make decisions about your finanace. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ............................last section......................................... -->
+    <section class="last-section" id="F&Q">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" data-aos="fade-in-down">
+                    <!-- Replaced with AOS attribute -->
+                    <div class="info-content">
+                        <h5> Various
+                            <span> General Question</span>,Convince
+                            <br> You To Our Service</h5>
+                        <p class="info-p"> we provid e varios Question that are often asked to us well as the answer , so
+                            <br> that you can answer yor doubt about as
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 acc-col" data-aos="fade-in-up" data-aos-delay="1000">
+                    <!-- Replaced with AOS attribute and delay -->
+                    <div class="accordino-menu">
+                        <input type="radio" name="trg1" id="acc1" checked="checked">
+                        <label for="acc1"> How Can I Track My Income And Expenses with thia Platform?</label>
+                        <div class="content-accordino">
+                            <div class="inner">
+                                wit the feature we have , you can enter financial activity according to catagory, then we will manage finacial Managment
+                                according to our feature;
+                            </div>
+                        </div>
+                        <!---2th menu-->
+                        <input type="radio" name="trg1" id="acc2" checked="checked">
+                        <label for="acc2">Can I Set Financial Goals WIthin the Money Tracker? </label>
+                        <div class="content-accordino">
+                            <div class="inner">
+                                you access it easly because it can be open on a cellphone and Laptop
+                            </div>
+                        </div>
+                        <!---3th menu-->
+                        <input type="radio" name="trg1" id="acc3" checked="checked">
+                        <label for="acc3">Can This Platform Be Accessed On varios Type Of Divice? </label>
+                        <div class="content-accordino">
+                            <div class="inner">
+                                we havethe best features that help you the manage your finance
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    ......................................Saving section...................................... -->
+
+    <section class="top-footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" data-aos="fade-in-down">
+                    <!-- Replaced with AOS attribute -->
+                    <div class="info-content">
+                        <h5> Let's
+                            <span> Manage Your Finanaces</span>For A
+                            <br> More Organiziation Life</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row link-row">
+                <div class="col-md-4" data-aos="fade-in-left" data-aos-delay="1000">
+                    <!-- Replaced with AOS attribute and delay -->
+                    <h3>
+                        <strong>Quick Links</strong>
+                    </h3>
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                <span class="fa fa-caret-right"></span>Home</a>
+                        </li>
+                        <li>
+                            <a href="Aboute.html">
+                                <span class="fa fa-caret-right"></span>About </a>
+                        </li>
+                        <li>
+                            <a href="contact.html">
+                                <span class="fa fa-caret-right"></span>contact </a>
+                        </li>
+                        <li>
+                            <a href="#F&Q">
+                                <span class="fa fa-caret-right"></span>F & Q </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4" data-aos="fade-in-up" data-aos-delay="2000">
+                    <!-- Replaced with AOS attribute and delay -->
+                    <h3>
+                        <strong> Contact Us</strong>
+                    </h3>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-periscope"></span> CTI Hert Afganistan</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-whatsapp"></span>+93 748236216 </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-envelope"></span>farzanaahmadzai175@gmai.com </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4" data-aos="fade-in-right" data-aos-delay="3000">
+                    <!-- Replaced with AOS attribute and delay -->
+                    <h3>
+                        <strong>Social Midea</strong>
+                    </h3>
+                    <div class="social-media">
+                        <div class="media-info">
+                            <li>
+                                <a>
+                                    <span class="fa fa-twitter"></span>twitter</a>
+                            </li>
+                            <li>
+                                <a>
+                                    <span class="fa fa-facebook"></span>facebook</a>
+                            </li>
+                            <li>
+                                <a>
+                                    <span class="fa fa-linkedin"></span>linkedin</a>
+                            </li>
+                            <li>
+                                <a>
+                                    <span class="fa fa-instagram"></span>insatgram</a>
+                            </li>
+                            <li>
+                                <a>
+                                    <span class="fa fa-github"></span>github</a>
+                            </li>
+                        </div>
+                        <div class="image">
+                            <img src="img/git hbu logo.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-section">
+        <div class="footer">
+            <p class="footer-p">
+                &copy; 2024 personal finance tracker .All rights reserved
+                <br>
+
+                <strong> Design & developed by Farzana Ahmadzai </strong>
+                <br> contact us: farzanaahmadzai175@gmail.com
+            </p>
+            </p>
+        </div>
+    </section>
+   
+
+    <script src="js/dashboard.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="Bootstrap/bootstrap.min.js"></script>
+    <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
